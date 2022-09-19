@@ -161,12 +161,11 @@ end
 
 local function transform(text)
   local res = ""
-  for pos, codepoint in utf.next, text do
+  for _, codepoint in utf.next, text do
     local code
     if not keys[codepoint] then code = codepoint else code = keys[codepoint] end
     res = utf.insert(res, utf.char(code))
   end
-  print(res)
   if text == res then
     return nil
   else
